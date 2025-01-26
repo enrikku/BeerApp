@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BeerApp.pageResume"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:charts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+    xmlns:converters="clr-namespace:BeerApp.Converters"
+    xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
+    Title="Resumen">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Body"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Total bebdidos" />
+                <Label
+                    x:Name="lblTotalBebidos"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Body"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="0" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="Body"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Litros consumidos" />
+                <Label
+                    x:Name="lblLitrosConsumidos"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="Body"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="0" />
+
+
+                <input:CheckBox
+                    x:Name="chkFilter"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    CheckChanged="chkFiltrer_CheckChanged"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Aplicar Filtro?" />
+
+                <!--  Filter  -->
+                <HorizontalStackLayout
+                    x:Name="hslFilter"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="15"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="False">
+
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Desde"
+                            VerticalOptions="CenterAndExpand" />
+                        <DatePicker
+                            x:Name="dpDesde"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Text="Hasta"
+                            VerticalOptions="CenterAndExpand" />
+                        <DatePicker
+                            x:Name="dpHasta"
+                            Grid.Row="0"
+                            Grid.Column="4"
+                            VerticalOptions="CenterAndExpand" />
+
+                        <Picker
+                            x:Name="pickerBrand"
+                            Title="Marca"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            HorizontalTextAlignment="Center" />
+
+                        <Button
+                            x:Name="btnAplicar"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            Clicked="btnAplicar_Clicked"
+                            Text="Aplicar" />
+                    </Grid>
+                </HorizontalStackLayout>
+            </Grid>
+
+            <!--  List Header  -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Body"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Marca" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="Body"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Cantidad" />
+                <Label
+                    Grid.Column="2"
+                    FontAttributes="Bold"
+                    FontSize="Body"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Fecha" />
+            </Grid>
+
+            <!--  List  -->
+            <ListView x:Name="BeerListView" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" ColumnSpacing="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="16"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding IdBrand, Converter={StaticResource BrandNameConverter}}"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="14"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding Qtt}"
+                                    TextColor="Gray"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    Grid.Column="2"
+                                    FontSize="14"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding Created}"
+                                    TextColor="Gray"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

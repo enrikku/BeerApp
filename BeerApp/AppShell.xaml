@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BeerApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BeerApp"
+    Title="BeerApp"
+    Shell.FlyoutBehavior="Flyout">
+
+    <!--  Flyout Menu Items  -->
+    <FlyoutItem Title="Home" Icon="home_icon.svg">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Resumen" Icon="list_icon.svg">
+        <ShellContent
+            Title="Resmen"
+            ContentTemplate="{DataTemplate local:pageResume}"
+            Route="pageResume" />
+    </FlyoutItem>
+
+
+    <MenuItem
+        x:Name="miExportDatabase"
+        Clicked="miExportDatabase_Clicked"
+        IconImageSource="export_icon.svg"
+        Text="Exportar Base de Datos" />
+    <MenuItem
+        x:Name="miImportDatabase"
+        Clicked="miImportDatabase_Clicked"
+        IconImageSource="import_icon.svg"
+        Text="Importar Base de Datos" />
+</Shell>

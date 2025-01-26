@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BeerApp.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Background="Black">
+
+    <VerticalStackLayout Background="Black" VerticalOptions="CenterAndExpand">
+
+        <StackLayout HorizontalOptions="Center">
+            <Frame Background="Black" BorderColor="White">
+                <StackLayout Background="Black">
+                    <VerticalStackLayout Background="Black">
+
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Otra cerveza mas?🍺" />
+                        <Entry
+                            x:Name="eQttBeers"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Text="1"
+                            WidthRequest="200" />
+                        <Stepper
+                            x:Name="sQttBeers"
+                            HorizontalOptions="CenterAndExpand"
+                            Minimum="1"
+                            ValueChanged="sQttBeers_Changed"
+                            Value="1" />
+                    </VerticalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry
+                            x:Name="eQttMesure"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Text="0"
+                            WidthRequest="100" />
+                        <Picker
+                            x:Name="pMesure"
+                            Title="Unidad"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            SelectedIndexChanged="pMesure_Changed"
+                            WidthRequest="70" />
+                    </HorizontalStackLayout>
+
+                    <Picker
+                        x:Name="pTypeBeer"
+                        Title="Marca de cerveza"
+                        HorizontalTextAlignment="Center" />
+                    <Button Clicked="btnAceptar_Clicked" Text="Aceptar" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
