@@ -14,5 +14,7 @@ namespace BeerApp
             "cl",
             "ml"
         };
+
+        public static float totalL = 0.0f;
     } 
 }

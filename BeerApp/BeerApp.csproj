@@ -27,7 +27,7 @@
 		<ApplicationId>com.enrikku.beerapp</ApplicationId>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
@@ -66,6 +66,9 @@
 
 	<ItemGroup>
 	  <None Remove="C:\Users\HP\.nuget\packages\inputkit.maui\4.4.7\contentFiles\any\net8.0-android34.0\icon512.png" />
+	  <None Remove="Platforms\Android\Resources\layout\widget_layout.xml" />
+	  <None Remove="Platforms\Android\Resources\layout\widget_list_item.xml" />
+	  <None Remove="Platforms\Android\Resources\xml\widget_info.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -87,6 +90,10 @@
 	  <MauiXaml Update="pageResume.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Platforms\Android\Resources\drawable\" />
 	</ItemGroup>
 
 </Project>

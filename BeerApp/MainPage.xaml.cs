@@ -1,4 +1,6 @@
-﻿namespace BeerApp
+﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+
+namespace BeerApp
 {
     public partial class MainPage : ContentPage
     {
@@ -116,7 +118,13 @@
                         beerData.TypeMesure = pMesure.SelectedItem.ToString();
                         beerData.Created = DateTime.Now;
 
-                        if (mdlVariablesGlobales.db.Insert(beerData) == 1) Toast.Make("Cerveza insertada").Show();
+                        if (mdlVariablesGlobales.db.Insert(beerData) == 1)
+                        {
+#if ANDROID
+                            BeerApp.Platforms.Android.Moduls.mldWidget.UpdateWidget(Android.App.Application.Context);
+#endif
+                            Toast.Make("Cerveza insertada").Show();
+                        }
                         else Toast.Make("Error al insertar la cerveza").Show();
                     }
                 }
@@ -128,9 +136,9 @@
             }
         }
 
-        #endregion "Eventos de Button"
+#endregion "Eventos de Button"
 
-        #endregion "Eventos"
+#endregion "Eventos"
 
         #region "Funciones"
 

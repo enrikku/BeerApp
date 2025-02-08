@@ -1,6 +1,9 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using BeerApp.Platforms.Android;
+using Microsoft.VisualBasic;
 
 namespace BeerApp
 {
