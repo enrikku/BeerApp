@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,26 @@ namespace BeerApp.Moduls
             }
 
             return totalBeerMesure;
+        }
+
+        public static int GetTotalBeers(List<BeerData> list)
+        {
+            int total = 0;
+
+            try
+            {
+                foreach (BeerData beer in list)
+                {
+                    total += beer.Qtt ;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+
+            return total;
         }
 
         private static float ConvertDlToL(float dl)

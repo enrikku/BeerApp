@@ -135,7 +135,7 @@ public partial class pageResume : ContentPage
     {
         try
         {
-            if(list.Count <= 0) totalBeerMesure = 0; totalDrinkedBeers = 0;
+            totalBeerMesure = 0; totalDrinkedBeers = 0;
 
             foreach (BeerData beer in list)
             {

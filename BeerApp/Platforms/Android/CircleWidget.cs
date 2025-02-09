@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BeerApp.Platforms.Android
 {
-    [BroadcastReceiver(Label = "Mi Widget", Enabled = true, Exported = true)]
+    [BroadcastReceiver(Label = "Beer Resumen", Enabled = true, Exported = true)]
     [IntentFilter(new [] { "android.appwidget.action.APPWIDGET_UPDATE", "com.enrikku.beerapp.UPDATE_WIDGET" })]
     [MetaData("android.appwidget.provider", Resource = "@xml/widget_info")]
     public class CircleWidget : AppWidgetProvider
@@ -46,7 +46,7 @@ namespace BeerApp.Platforms.Android
 
                 var llBeerData = mdlVariablesGlobales.db.Table<BeerData>().ToList();
                 views.SetTextViewText(Resource.Id.totalLitrosTextView, "Total: " + mdUtilidades.GetTotalLitros(llBeerData).ToString("F2") + "L");
-                views.SetTextViewText(Resource.Id.totalBeers, $"Total: {llBeerData.Count}");
+                views.SetTextViewText(Resource.Id.totalBeers, $"Total: {mdUtilidades.GetTotalBeers(llBeerData)}");
 
                 appWidgetManager.UpdateAppWidget(widgetId, views);
             }
@@ -68,7 +68,7 @@ namespace BeerApp.Platforms.Android
                         var views = new RemoteViews(context.PackageName, Resource.Layout.widget_layout);
                         var llBeerData = mdlVariablesGlobales.db.Table<BeerData>().ToList();
                         views.SetTextViewText(Resource.Id.totalLitrosTextView, "Total: " + mdUtilidades.GetTotalLitros(llBeerData).ToString("F2") + "L");
-                        views.SetTextViewText(Resource.Id.totalBeers, $"Total: {llBeerData.Count}");
+                        views.SetTextViewText(Resource.Id.totalBeers, $"Total: {mdUtilidades.GetTotalBeers(llBeerData)}");
                         appWidgetManager.UpdateAppWidget(widgetId, views);
                     }
                 }
