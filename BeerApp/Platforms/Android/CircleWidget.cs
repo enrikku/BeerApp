@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace BeerApp.Platforms.Android
 {
     [BroadcastReceiver(Label = "Beer Resumen", Enabled = true, Exported = true)]
-    [IntentFilter(new [] { "android.appwidget.action.APPWIDGET_UPDATE", "com.enrikku.beerapp.UPDATE_WIDGET" })]
+    [IntentFilter(new [] { "android.appwidget.action.APPWIDGET_UPDATE" })]
     [MetaData("android.appwidget.provider", Resource = "@xml/widget_info")]
     public class CircleWidget : AppWidgetProvider
     {
@@ -58,7 +58,7 @@ namespace BeerApp.Platforms.Android
 
             try
             {
-                if (intent.Action == AppWidgetManager.ActionAppwidgetUpdate || intent.Action == "com.tuapp.ACTUALIZAR_WIDGET")
+                if (intent.Action == AppWidgetManager.ActionAppwidgetUpdate)
                 {
                     var appWidgetManager = AppWidgetManager.GetInstance(context);
                     var widgetIds = intent.GetIntArrayExtra(AppWidgetManager.ExtraAppwidgetIds);

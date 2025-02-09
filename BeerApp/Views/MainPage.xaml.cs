@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 
-namespace BeerApp
+namespace BeerApp.Views
 {
     public partial class MainPage : ContentPage
     {

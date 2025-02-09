@@ -1,4 +1,4 @@
-namespace BeerApp;
+namespace BeerApp.Views;
 
 public partial class pageResume : ContentPage
 {

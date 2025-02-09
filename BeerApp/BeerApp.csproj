@@ -81,19 +81,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="pageResume.xaml.cs">
+	  <Compile Update="Views\pageResume.xaml.cs">
 	    <DependentUpon>pageResume.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="pageResume.xaml">
+	  <MauiXaml Update="Views\pageResume.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Platforms\Android\Resources\drawable\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="AndroidBinding1">
+	    <HintPath>..\AndroidBinding1\bin\Debug\net9.0-android\AndroidBinding1.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 </Project>
